@@ -24,7 +24,6 @@ struct Server server_constructor(int domain, int service, int protocol, u_long i
     int port, int backlog, void (*launch)(struct Server *server));
 
 
-
 #endif
 
 

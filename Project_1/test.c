@@ -11,9 +11,9 @@ hdelibc
 void launch(struct Server *server) {
     char buffer[30000];
     printf("========= WAITING FOR CONNECTION =========");
-    int address_length = sizeof(server.address);
+    int address_length = sizeof(server->address);
 
-    int new_socket = accept(server.socket, (struct sockaddr *)&server.address,
+    int new_socket = accept(server->socket, (struct sockaddr *)&server->address,
     (socklen_t *)&address_length);
     read(new_socket, buffer, 30000);
     printf("%s\n", buffer);

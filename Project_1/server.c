@@ -11,9 +11,8 @@ Terms / Concepts / built-in functions:
 
 */
 
-
 struct Server server_constructor(int domain, int service, int protocol, u_long interface, 
-    int port, int backlog, void (*launch)(void))
+    int port, int backlog, void (*launch)(struct Server *server))
     {
         struct Server server;
         server.domain = domain;
@@ -47,11 +46,9 @@ struct Server server_constructor(int domain, int service, int protocol, u_long i
             printf("Failed to start listening...\n");
             exit(1);
         }
-
         server.launch = launch;
 
         return server;
-
     }
 
 
