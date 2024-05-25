@@ -39,5 +39,24 @@ void handle_client(int client_socket) {
 int main() {
     int server_fd, client_socket;
     struct sockaddr_in server_addr, client_addr;
+    socklen_t client_addr_len = sizeof(client_addr);
+    
+    // create a socket
+    socket(AF_INET, SOCK_STREAM, 0);
+    if (server_fd == -1) {
+        perror("socket");
+        exit(EXIT_FAILURE);
+    }
+
+    server_addr.sin_family = AF_INET;
+    server_addr.sin_addr.s_addr = INADDR_ANY;
+    server_addr.sin_port = htons(PORT);
+
+    if(bind(server_fd, (struct sockaddr *)&server_addr, sizeof(server_addr)) < 0) {
+        perror("bind");
+        close(server_fd);
+        exit(EXIT_FAILURE);
+    }
+
     return 0;
 }
