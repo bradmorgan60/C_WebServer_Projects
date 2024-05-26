@@ -5,6 +5,8 @@
 // the below ones are new to me
 #include <unistd.h>
 #include <arpa/inet.h>
+#include <sys/socket.h>
+#include <sys/types.h>
 
 #define PORT 8080
 #define BUFFER_SIZE 1024 // this is bytes?

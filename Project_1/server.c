@@ -8,7 +8,6 @@ Terms / Concepts / built-in functions:
     htons()
     htonl()
     Bind -> you bind sockets to a network...what does that mean?
-
 */
 
 struct Server server_constructor(int domain, int service, int protocol, u_long interface, 

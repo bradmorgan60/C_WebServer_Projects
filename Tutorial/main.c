@@ -58,5 +58,28 @@ int main() {
         exit(EXIT_FAILURE);
     }
 
+    if (listen(server_fd, 10) < 0) {
+        perror("listen");
+        close(server_fd);
+        exit(EXIT_FAILURE);
+    }
+
+    printf("Server is listening on port %d", PORT);
+
+    // Need a loop to accept and handle client connections
+
+    while(1) {
+        client_socket = accept(server_fd, (struct sockaddr *)&client_addr, &client_addr_len);
+        if (client_socket < 0) {
+            perror("accept");
+            close(server_fd);
+            exit(EXIT_FAILURE);
+        }
+
+        handle_client(client_socket);
+    }
+
+    close(server_fd);
+
     return 0;
 }
