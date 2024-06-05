@@ -11,3 +11,16 @@
 #define PORT 8080
 #define BUFFER_SIZE 1024 // this is bytes?
 
+
+struct Server {
+    int domain;
+    int service;
+    int protocol;
+    u_long interface;
+    int port;
+    int backlog;
+
+    struct sockaddr_in address;
+    int socket;
+    void (*launch)(void);
+};
